@@ -6,15 +6,33 @@ var list = [];
 /**
  * Funcion que agrega un nuevo producto a la lista
  */
-void addList(){
-
+void addList(valor) {
+  var test = valor;
+  while (test == 'si') {
     print('¿Que producto deseas agregar?');
     String? addList = stdin.readLineSync();
 
     list.add(addList);
+
+    print('¿Deseas agregar otro producto?');
+    String? newProduct = stdin.readLineSync();
+
+    if (newProduct == 'no') {
+      test = 'no';
+      print('la lista de productos es: $list');
+    } else if (newProduct != 'si') {
+      print('ingresa un valor  validoi (Si o No)');
+      print('¿Deseas agregar otro producto?');
+      String? newProduct = stdin.readLineSync();
     
-    print(list);
+      if (newProduct == 'no') {
+        test = 'no';
+        print('la lista de productos es: $list');
+      }
+      
+    }
   }
+}
 
 /**
  * funcion inicial
@@ -22,26 +40,11 @@ void addList(){
 void main(List<String> args) {
   print('¿Quieres crear un lista?');
   String? a = stdin.readLineSync();
-  
-  if (a == "si"){
-    
-      addList();
-      print('¿Deseas agregar otro producto?');
-      String? newProduct = stdin.readLineSync();
-      if (newProduct == 'si'){
-        addList();
-      }
-      else if (newProduct == 'no'){
-        print('la lista de productos es  $list');
-      }
-      
-    }
-  else if (a == "no"){
-    print("");
+
+  if (a == "si") {
+    addList(a);
+
+  } else if (a == "no") {
+    print("bye");
   }
-  /*else{
-    print ('ingrese si o no');
-    print('¿Quieres crear un lista?');
-    String? a = stdin.readLineSync();
-  }*/
 }
