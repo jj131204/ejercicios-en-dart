@@ -21,7 +21,7 @@ void addList(valor) {
       test = 'no';
       print('la lista de productos es: $list');
     } else if (newProduct != 'si') {
-      print('ingresa un valor  validoi (Si o No)');
+      print('ingresa un valor  valido (Si o No)');
       print('¿Deseas agregar otro producto?');
       String? newProduct = stdin.readLineSync();
     
