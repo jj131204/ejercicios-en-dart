@@ -38,10 +38,15 @@ void listEdit() {
     if (list.length + 1 < campoList1) {
       print('ingresa un numero valido');
       changueList();
-    } else {
+    }
+    else {
       int position = campoList1 - 1;
-      //list.remove(position);
+      
       list.removeAt(position);
+      if (list.length == 0){
+        print("su lista esta vacia");
+      }
+      
       print(' Su nueva lista de compras quedo de la siguiente manera: $list');
       changueList();
     }
@@ -111,5 +116,6 @@ void main(List<String> args) {
     addList(a);
   } else if (a == "no") {
     print("bye");
+    exit(0);
   }
 }
