@@ -1,93 +1,122 @@
-import 'package:flutter/material.dart';
-import 'package:musica_historica/pages/myBlogs.dart';
-import 'package:musica_historica/pages/notices.dart';
-import 'package:musica_historica/pages/publicBLogs.dart';
+import 'dart:js';
 
-void main(){
-  runApp(const musicaHitorica());
+import 'package:flutter/material.dart';
+import 'package:musica_historica/home.dart';
+
+void main() {
+  runApp(const login());
 }
 
-class musicaHitorica extends StatelessWidget {
-  const musicaHitorica({super.key});
+final user = "juan";
+final password = "hola1234";
+
+final myControllerUser = TextEditingController();
+
+final myControllerPassw = TextEditingController();
+
+class login extends StatelessWidget {
+  const login({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: "Musica historica",
       debugShowCheckedModeBanner: false,
-      home: home(),
+      home: loginUser(),
     );
   }
 }
 
-class home extends StatefulWidget {
-  const home({super.key});
+class loginUser extends StatefulWidget {
+  const loginUser({super.key});
 
   @override
-  State<home> createState() => _homeState();
+  State<loginUser> createState() => _loginUserState();
 }
 
-class _homeState extends State<home> {
-
-  int _pageActual = 1;
-
-  List<Widget> _paginas = [
-    notices(),
-    myBLogs(),
-    publicBLogs()
-  ];
-
-  List<Widget> _titulos = [
-   Text("Container animado"),
-   Text("Users"),
-   Text("Favoritos")
-  ];
-
+class _loginUserState extends State<loginUser> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        centerTitle: true,
-        title: Text("Musica historica"),
+        title: Text("BIevenido a musica historica"),
       ),
-      
-      body:  _paginas[_pageActual],
-
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _pageActual,
-        
-        // Sirve para subrayar el icono seleccionado
-        // index = a la posicion que este seleccionada en los items del bottonNavigatorBar.
-
-        onTap: (index) {
-          setState(() {
-            _pageActual = index;
-          });
-        },
-
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.newspaper_rounded),
-            label: "Noticias"
-              //'test', styles: TextStyle(fontSize: 30.067),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.dashboard_customize_rounded),
-            label: "Mis blogs",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.public_rounded),
-            label: "blogs publicos",
-          ),
-        ],
+      body: Container(
+        child: Center(
+          child: newSesion(),
+        ),
       ),
     );
-    
   }
 }
 
+newSesion() {
+  return Container(
+      child: Center(
+          child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+    nombre(),
+    SizedBox(
+      height: 10.0,
+    ),
+    campoUsuario(),
+    SizedBox(
+      height: 10.0,
+    ),
+    campoContrasena(),
+    // espacio
+    SizedBox(
+      height: 15.0,
+    ),
+    //boton()]),
+    boton(),
+  ])));
+}
 
+Widget nombre() {
+  return Text("Iniciar sesión",
+      style: TextStyle(
+          color: Colors.blue, fontSize: 40.0, fontFamily: 'Times New Roman'));
+}
 
+Widget campoUsuario() {
+  return Container(
+    padding: EdgeInsets.symmetric(horizontal: 50.0, vertical: 7),
+    child: TextField(
+      controller: myControllerUser,
+      decoration: InputDecoration(
+        hintText: "User",
+        fillColor: Colors.white,
+        filled: true,
+      ),
+    ),
+  );
+}
 
+Widget campoContrasena() {
+  return Container(
+    padding: EdgeInsets.symmetric(horizontal: 50.0, vertical: 7.0),
+    child: TextField(
+      controller: myControllerPassw,
+      obscureText: true,
+      decoration: InputDecoration(
+        hintText: "Password",
+        fillColor: Colors.white,
+        filled: true,
+      ),
+    ),
+  );
+}
 
-
+Widget boton() {
+  return ElevatedButton(
+    onPressed: () {
+      if (user == myControllerUser.text && password == myControllerPassw.text) {
+        print("hola mundo");
+      }
+    },
+    child: Text(
+      "continuar",
+      style: TextStyle(color: Colors.white, fontSize: 16),
+    ),
+  );
+}
