@@ -11,4 +11,3 @@ class myBLogs extends StatelessWidget {
     );
   }
 }
-

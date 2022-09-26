@@ -1,5 +1,3 @@
-import 'dart:js';
-
 import 'package:flutter/material.dart';
 import 'package:musica_historica/home.dart';
 
@@ -14,9 +12,14 @@ final myControllerUser = TextEditingController();
 
 final myControllerPassw = TextEditingController();
 
-class login extends StatelessWidget {
+class login extends StatefulWidget {
   const login({super.key});
 
+  @override
+  State<login> createState() => _loginState();
+}
+
+class _loginState extends State<login> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -43,14 +46,14 @@ class _loginUserState extends State<loginUser> {
       ),
       body: Container(
         child: Center(
-          child: newSesion(),
+          child: newSesion(context),
         ),
       ),
     );
   }
 }
 
-newSesion() {
+newSesion(context) {
   return Container(
       child: Center(
           child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
@@ -68,7 +71,7 @@ newSesion() {
       height: 15.0,
     ),
     //boton()]),
-    boton(),
+    boton(context),
   ])));
 }
 
@@ -107,16 +110,34 @@ Widget campoContrasena() {
   );
 }
 
-Widget boton() {
+Widget boton(context) {
   return ElevatedButton(
-    onPressed: () {
-      if (user == myControllerUser.text && password == myControllerPassw.text) {
-        print("hola mundo");
-      }
+      child: Text("Botton"),
+      onPressed: () => {
+            if (user == myControllerUser && password == myControllerPassw)
+              {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => musicaHitorica()))
+              }
+            else
+              {
+                AlertDialog(
+                    /** ALert dialog de error */
+                    )
+              }
+          });
+}
+
+
+
+
+  /** onPressed: () {
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => musicaHitorica()));
     },
     child: Text(
       "continuar",
       style: TextStyle(color: Colors.white, fontSize: 16),
     ),
-  );
-}
+  );*/
+
