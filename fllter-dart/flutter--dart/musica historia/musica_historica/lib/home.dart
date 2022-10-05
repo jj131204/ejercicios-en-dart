@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:musica_historica/main.dart';
 import 'package:musica_historica/pages/myBlogs.dart';
 import 'package:musica_historica/pages/notices.dart';
 import 'package:musica_historica/pages/publicBLogs.dart';
@@ -29,20 +30,47 @@ class _homeState extends State<home> {
   List<Widget> _paginas = [notices(), myBLogs(), publicBLogs()];
 
   List<Widget> _titulos = [
-    Text("Container animado"),
-    Text("Users"),
-    Text("Favoritos")
+    Text("Noticias"),
+    Text("Mis blogs"),
+    Text("Blogs publicos")
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xff005fae),
-        centerTitle: true,
-        title: Text("Musica historica"),
-      ),
+          backgroundColor: Color(0xff005fae),
+          centerTitle: true,
+          title: _titulos[_pageActual] ,
+          // Icono de logout del appBar
+          actions: <Widget>[
+            IconButton(
+                icon: Icon(Icons.logout_rounded),
+                // Funcion para que aparezca el alertDialog con la confirmación de cerrar sesion
+                onPressed: () => showDialog<String>(
+                      context: context,
+                      builder: (BuildContext context) => AlertDialog(
+                        title: const Text('Cerrar sesión'),
+                        content: const Text(
+                            '¿Estas seguro que quieres cerrar sesión?'),
+                        actions: <Widget>[
+                          TextButton(
+                            child: const Text('Cancelar'),
+                            onPressed: () => Navigator.pop(context, 'Cancelar'),
+                          ),
+                          TextButton(
+                            child: const Text('Salir'),
+                            onPressed: () => Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => login())),
+                          ),
+                        ],
+                      ),
+                    )),
+          ]),
       body: _paginas[_pageActual],
+
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _pageActual,
 
@@ -60,7 +88,6 @@ class _homeState extends State<home> {
         items: [
           BottomNavigationBarItem(
               icon: Icon(Icons.newspaper_rounded), label: "Noticias"
-              //'test', styles: TextStyle(fontSize: 30.067),
               ),
           BottomNavigationBarItem(
             icon: Icon(Icons.dashboard_customize_rounded),
@@ -74,4 +101,27 @@ class _homeState extends State<home> {
       ),
     );
   }
+}
+
+_logout(context) {
+  showDialog<String>(
+    context: context,
+    builder: (BuildContext context) => AlertDialog(
+      title: const Text('AlertDialog Title'),
+      content: const Text('AlertDialog description'),
+      actions: <Widget>[
+        TextButton(
+          onPressed: () => Navigator.pop(context, 'Cancel'),
+          child: const Text(
+            'Cancel',
+            style: TextStyle(color: Color(0xff005fae)),
+          ),
+        ),
+        TextButton(
+          onPressed: () => Navigator.pop(context, 'OK'),
+          child: const Text('OK', style: TextStyle(color: Color(0xff005fae))),
+        ),
+      ],
+    ),
+  );
 }

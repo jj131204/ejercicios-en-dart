@@ -23,6 +23,7 @@ class _loginState extends State<login> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+
       title: "Musica historica",
       debugShowCheckedModeBanner: false,
       home: loginUser(),
@@ -42,6 +43,8 @@ class _loginUserState extends State<loginUser> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Color(0xff005fae),
+        centerTitle: true,
         title: Text("BIevenido a musica historica"),
       ),
       body: Container(
@@ -78,7 +81,7 @@ newSesion(context) {
 Widget nombre() {
   return Text("Iniciar sesión",
       style: TextStyle(
-          color: Colors.blue, fontSize: 40.0, fontFamily: 'Times New Roman'));
+          color: Color(0xff005fae), fontSize: 40.0, fontFamily: 'Times New Roman'));
 }
 
 Widget campoUsuario() {
@@ -112,32 +115,20 @@ Widget campoContrasena() {
 
 Widget boton(context) {
   return ElevatedButton(
+    
       child: Text("Botton"),
-      onPressed: () => {
-            if (user == myControllerUser && password == myControllerPassw)
+      onPressed: () async {
+        if (user == myControllerUser.text && password == myControllerPassw.text)
               {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => musicaHitorica()))
+                Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => musicaHitorica()));
+                  print(myControllerUser);
               }
-            else
-              {
-                AlertDialog(
-                    /** ALert dialog de error */
-                    )
+              else{
+                print("incorrecto");
+                print(myControllerUser);
               }
-          });
+    }
+
+          );
 }
-
-
-
-
-  /** onPressed: () {
-      Navigator.push(
-          context, MaterialPageRoute(builder: (context) => musicaHitorica()));
-    },
-    child: Text(
-      "continuar",
-      style: TextStyle(color: Colors.white, fontSize: 16),
-    ),
-  );*/
-
