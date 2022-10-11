@@ -115,7 +115,6 @@ Widget campoContrasena() {
 
 Widget boton(context) {
   return ElevatedButton(
-    
       child: Text("Botton"),
       onPressed: () async {
         if (user == myControllerUser.text && password == myControllerPassw.text)
@@ -130,5 +129,5 @@ Widget boton(context) {
               }
     }
 
-          );
+  );
 }

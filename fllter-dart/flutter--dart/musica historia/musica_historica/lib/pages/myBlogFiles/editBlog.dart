@@ -1,24 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:musica_historica/home.dart';
+import 'package:musica_historica/main.dart';
 import 'package:musica_historica/pages/myBlogFiles/cardsBlogs.dart';
 import 'package:musica_historica/pages/myBlogs.dart';
-import '../../main.dart';
 
 final nameInfoBlog = TextEditingController();
 final imageInfoBlog = TextEditingController();
 final linkInfoBlog = TextEditingController();
 final descriptionInfoBlog = TextEditingController();
 
-class newBlog extends StatelessWidget {
-  const newBlog({super.key});
-
-  @override
-  Widget build(BuildContext context) {
+editBlog(context, nameEditBLog, descriptionEditBlog){
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Color(0xff005fae),
           centerTitle: true,
-          title: Text("Crear un nuevo blog"),
+          title: Text("Edita tu blog"),
           actions: <Widget>[
             IconButton(
                 icon: Icon(Icons.logout_rounded),
@@ -60,7 +56,7 @@ class newBlog extends StatelessWidget {
                   style: TextStyle(fontSize: 12, color: Color(0xff333333), )
                 ),),
 
-                nameBlog(),
+                nameBlog(nameEditBLog),
                 SizedBox(
                   height: 15.0,
                 ),
@@ -72,7 +68,7 @@ class newBlog extends StatelessWidget {
                 SizedBox(
                   height: 15.0,
                 ),
-                descriptionBlog(),
+                descriptionBlog(descriptionEditBlog),
                 SizedBox(
                   height: 25.0,
                 ),
@@ -81,16 +77,16 @@ class newBlog extends StatelessWidget {
             ),
           ),
         ));
-  }
 }
 
-Widget nameBlog() {
+Widget nameBlog(nameEditBLog) {
   return Container(
     padding: EdgeInsets.symmetric(horizontal: 50.0, vertical: 7),
     child: TextField(
       controller: nameInfoBlog,
       decoration: InputDecoration(
-        hintText: "Nombre",
+        counterText: nameEditBLog,
+        hintText: nameEditBLog,
         fillColor: Colors.white,
         filled: true,
       ),
@@ -129,17 +125,21 @@ Widget linkBlog() {
   );
 }
 
-Widget descriptionBlog() {
+Widget descriptionBlog(descriptionEditBlog) {
   return Container(
     padding: EdgeInsets.symmetric(horizontal: 50.0, vertical: 7),
     child: TextField(
       maxLines: null,
       controller: descriptionInfoBlog,
+
       decoration: InputDecoration(
-        hintText: "Descripción",
+        hintText: descriptionEditBlog,
         fillColor: Colors.white,
         filled: true,
       ),
+        onChanged: (text) {
+          print(text);
+          },
     ),
   );
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:musica_historica/pages/myBlogFiles/editBlog.dart';
 import 'package:musica_historica/pages/myBlogFiles/infoBlogs.dart';
 
 
@@ -26,7 +27,9 @@ miCard(context, index) {
       SizedBox(
         height: 15.0,
       ),
-      Card(
+      GestureDetector(
+        child: Card(
+        
         child: Column(
           children: [
             ListTile(
@@ -45,8 +48,7 @@ miCard(context, index) {
                   ),
                   onPressed: () {
                     Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context)=> newBlog())
+                context, MaterialPageRoute(builder: (context) => editBlog(context, blogs[index].name, blogs[index].description))
               );
                   },
                 ),
@@ -63,6 +65,8 @@ miCard(context, index) {
           ],
         ),
       ),
+      ),
+      
       SizedBox(
         height: 15.0,
       ),
