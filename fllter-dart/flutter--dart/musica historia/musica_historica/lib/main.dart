@@ -23,7 +23,6 @@ class _loginState extends State<login> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-
       title: "Musica historica",
       debugShowCheckedModeBanner: false,
       home: loginUser(),
@@ -81,7 +80,9 @@ newSesion(context) {
 Widget nombre() {
   return Text("Iniciar sesión",
       style: TextStyle(
-          color: Color(0xff005fae), fontSize: 40.0, fontFamily: 'Times New Roman'));
+          color: Color(0xff005fae),
+          fontSize: 40.0,
+          fontFamily: 'Times New Roman'));
 }
 
 Widget campoUsuario() {
@@ -115,19 +116,19 @@ Widget campoContrasena() {
 
 Widget boton(context) {
   return ElevatedButton(
+      style: ElevatedButton.styleFrom(
+        backgroundColor: Color(0xff005fae),
+      ),
       child: Text("Botton"),
       onPressed: () async {
-        if (user == myControllerUser.text && password == myControllerPassw.text)
-              {
-                Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => musicaHitorica()));
-                  print(myControllerUser);
-              }
-              else{
-                print("incorrecto");
-                print(myControllerUser);
-              }
-    }
-
-  );
+        if (user == myControllerUser.text &&
+            password == myControllerPassw.text) {
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => musicaHitorica()));
+          print(myControllerUser);
+        } else {
+          print("incorrecto");
+          print(myControllerUser);
+        }
+      });
 }
