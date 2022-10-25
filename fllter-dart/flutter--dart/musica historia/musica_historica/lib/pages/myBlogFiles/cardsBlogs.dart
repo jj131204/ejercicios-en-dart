@@ -3,8 +3,6 @@ import 'package:musica_historica/pages/myBlogFiles/editBlog.dart';
 import 'package:musica_historica/pages/myBlogFiles/infoBlogs.dart';
 import 'package:musica_historica/pages/publicBLogs.dart';
 
-
-
 class Blogs {
   String name;
   String description;
@@ -13,13 +11,15 @@ class Blogs {
   Blogs(this.name, this.description);
 }
 
-
 List<Blogs> blogs = [
   Blogs("Legends never die", "Legends never die When the world is calling you"),
   Blogs("Enemy", "Oh, the misery Everybody wants to be my enemy"),
-  Blogs("Ojos color sol", "Cuando amanece, tu lindura Cualquier constelación se pone insegura"),
-  Blogs("Bomba para fincar", "Que la guitarra me haga un sonido así...  Seguido por el bajo"),
-  Blogs("Bomba para fincar", "Que la guitarra me haga un sonido así...  Seguido por el bajo"),
+  Blogs("Ojos color sol",
+      "Cuando amanece, tu lindura Cualquier constelación se pone insegura"),
+  Blogs("Bomba para fincar",
+      "Que la guitarra me haga un sonido así...  Seguido por el bajo"),
+  Blogs("Bomba para fincar",
+      "Que la guitarra me haga un sonido así...  Seguido por el bajo"),
 ];
 
 miCard(context, index) {
@@ -70,7 +70,6 @@ miCard(context, index) {
         ),
       ),
       ),
-      
       SizedBox(
         height: 15.0,
       ),

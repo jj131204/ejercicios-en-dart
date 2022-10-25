@@ -95,7 +95,9 @@ newSesion(context) {
 Widget nombre() {
   return Text("Iniciar sesión",
       style: TextStyle(
-          color: Color(0xff005fae), fontSize: 40.0, fontFamily: 'nunito-bold'));
+          color: Color(0xff005fae),
+          fontSize: 40.0,
+          fontFamily: 'Times New Roman'));
 }
 
 Widget campoUsuario() {
@@ -129,6 +131,9 @@ Widget campoContrasena() {
 
 Widget boton(context) {
   return ElevatedButton(
+      style: ElevatedButton.styleFrom(
+        backgroundColor: Color(0xff005fae),
+      ),
       child: Text("Botton"),
       onPressed: () async {
         if (user == myControllerUser.text &&
@@ -138,12 +143,12 @@ Widget boton(context) {
                 musicaHitorica_desktop: musicaHitorica_desktop(),
                 musica_historica: musicaHitorica(),
               )));
-          print(myControllerUser);
+              
         } else {
           print("incorrecto");
           print(myControllerUser);
         }
-      });
+  );
 }
 
 musicaHitorica_desktop(){
