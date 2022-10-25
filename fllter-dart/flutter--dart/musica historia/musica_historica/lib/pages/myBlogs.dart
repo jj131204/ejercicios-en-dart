@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 // import que ññama a la funcion miCard() que crea las tarjetas de mis blogs
 import 'myBlogFiles/cardsBlogs.dart';
 import 'myBlogFiles/infoBlogs.dart';
+import 'package:musica_historica/pages/blogsList.dart';
 
 
 /** Seccion de mis blogs 2  seleccionada por defecto */

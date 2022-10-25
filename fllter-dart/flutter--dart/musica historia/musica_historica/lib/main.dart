@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:musica_historica/home.dart';
+import 'package:musica_historica/home_desktop.dart';
 
 void main() {
   runApp(const login());
@@ -140,22 +141,16 @@ Widget boton(context) {
             password == myControllerPassw.text) {
           Navigator.push(context,
               MaterialPageRoute(builder: (context) => resposiveDesign(
-                musicaHitorica_desktop: musicaHitorica_desktop(),
+                musicaHitorica_desktop: musica_historica_desktop(),
                 musica_historica: musicaHitorica(),
               )));
-              
         } else {
           print("incorrecto");
           print(myControllerUser);
-        }
+        }}
   );
 }
 
-musicaHitorica_desktop(){
-  return Center(
-    child: Text("DESKTOP"),
-  );
-}
 
 
 class  resposiveDesign extends StatelessWidget {
@@ -175,8 +170,8 @@ class  resposiveDesign extends StatelessWidget {
       builder: (BuildContext context, BoxConstraints constraints) {
         
         print(constraints);
-        if(constraints.maxWidth > 768){
-          return musicaHitorica_desktop;
+        if(constraints.maxWidth > 1000){
+          return musica_historica_desktop();
         }
         return musica_historica;
       },

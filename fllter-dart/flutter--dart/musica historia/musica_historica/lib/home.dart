@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:musica_historica/main.dart';
-import 'package:musica_historica/pages/myBlogs.dart';
-import 'package:musica_historica/pages/notices.dart';
-import 'package:musica_historica/pages/publicBLogs.dart';
+import 'package:musica_historica/pages/nameFunctionsBlogs.dart';
 
 class musicaHitorica extends StatelessWidget {
   const musicaHitorica({super.key});
@@ -27,13 +25,7 @@ class home extends StatefulWidget {
 class _homeState extends State<home> {
   int _pageActual = 1;
 
-  List<Widget> _paginas = [notices(), myBLogs(), publicBLogs()];
 
-  List<Widget> _titulos = [
-    Text("Noticias"),
-    Text("Mis blogs"),
-    Text("Blogs publicos")
-  ];
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +33,7 @@ class _homeState extends State<home> {
       appBar: AppBar(
           backgroundColor: Color(0xff005fae),
           centerTitle: true,
-          title: _titulos[_pageActual] ,
+          title: titulos[_pageActual] ,
           // Icono de logout del appBar
           actions: <Widget>[
             IconButton(
@@ -69,7 +61,7 @@ class _homeState extends State<home> {
                       ),
                     )),
           ]),
-      body: _paginas[_pageActual],
+      body: paginas[_pageActual],
 
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _pageActual,

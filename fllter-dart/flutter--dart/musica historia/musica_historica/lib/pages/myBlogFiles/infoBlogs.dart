@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:musica_historica/home.dart';
 import 'package:musica_historica/pages/myBlogFiles/cardsBlogs.dart';
 import 'package:musica_historica/pages/myBlogs.dart';
+import 'package:musica_historica/pages/blogsList.dart';
 import '../../main.dart';
 
 final nameInfoBlog = TextEditingController();

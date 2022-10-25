@@ -3,6 +3,7 @@ import 'package:musica_historica/home.dart';
 import 'package:musica_historica/main.dart';
 import 'package:musica_historica/pages/myBlogFiles/cardsBlogs.dart';
 import 'package:musica_historica/pages/myBlogs.dart';
+import 'package:musica_historica/pages/blogsList.dart';
 
 final nameEditBlog = TextEditingController();
 final imageEditBlog = TextEditingController();
