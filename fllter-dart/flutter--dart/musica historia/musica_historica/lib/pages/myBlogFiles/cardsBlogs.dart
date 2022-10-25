@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:musica_historica/pages/myBlogFiles/editBlog.dart';
 import 'package:musica_historica/pages/myBlogFiles/infoBlogs.dart';
+import 'package:musica_historica/pages/publicBLogs.dart';
 
 
 
@@ -57,7 +58,10 @@ miCard(context, index) {
                     "Compartir",
                     style: TextStyle(fontSize: 15, color: Color(0xff005fae)),
                   ),
-                  onPressed: () {/* ... */},
+                  onPressed: () {
+                    Navigator.push(
+                context, MaterialPageRoute(builder: (context) => publicBLogs()));
+                  },
                 ),
                 const SizedBox(width: 10),
               ],

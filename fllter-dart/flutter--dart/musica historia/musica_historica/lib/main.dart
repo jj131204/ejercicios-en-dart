@@ -23,7 +23,6 @@ class _loginState extends State<login> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-
       title: "Musica historica",
       debugShowCheckedModeBanner: false,
       home: loginUser(),
@@ -45,7 +44,7 @@ class _loginUserState extends State<loginUser> {
       appBar: AppBar(
         backgroundColor: Color(0xff005fae),
         centerTitle: true,
-        title: Text("BIevenido a musica historica"),
+        title: Text("Bienvenido a musica historica"),
       ),
       body: Container(
         child: Center(
@@ -59,29 +58,44 @@ class _loginUserState extends State<loginUser> {
 newSesion(context) {
   return Container(
       child: Center(
-          child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-    nombre(),
-    SizedBox(
-      height: 10.0,
+          child: Container(
+    constraints: BoxConstraints(
+        minWidth: 100, maxWidth: 500, minHeight: 100, maxHeight: 400),
+    decoration: BoxDecoration(
+      color: Colors.white,
+      boxShadow: [
+        BoxShadow(
+          color: Colors.grey.withOpacity(0.5),
+          spreadRadius: 5,
+          blurRadius: 7,
+          offset: Offset(0, 3), // changes position of shadow
+        ),
+      ],
     ),
-    campoUsuario(),
-    SizedBox(
-      height: 10.0,
-    ),
-    campoContrasena(),
-    // espacio
-    SizedBox(
-      height: 15.0,
-    ),
-    //boton()]),
-    boton(context),
-  ])));
+    child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+      nombre(),
+      SizedBox(
+        height: 10.0,
+      ),
+      campoUsuario(),
+      SizedBox(
+        height: 10.0,
+      ),
+      campoContrasena(),
+      // espacio
+      SizedBox(
+        height: 15.0,
+      ),
+      //boton()]),
+      boton(context),
+    ]),
+  )));
 }
 
 Widget nombre() {
   return Text("Iniciar sesión",
       style: TextStyle(
-          color: Color(0xff005fae), fontSize: 40.0, fontFamily: 'Times New Roman'));
+          color: Color(0xff005fae), fontSize: 40.0, fontFamily: 'nunito-bold'));
 }
 
 Widget campoUsuario() {
@@ -117,17 +131,55 @@ Widget boton(context) {
   return ElevatedButton(
       child: Text("Botton"),
       onPressed: () async {
-        if (user == myControllerUser.text && password == myControllerPassw.text)
-              {
-                Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => musicaHitorica()));
-                  print(myControllerUser);
-              }
-              else{
-                print("incorrecto");
-                print(myControllerUser);
-              }
-    }
+        if (user == myControllerUser.text &&
+            password == myControllerPassw.text) {
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => resposiveDesign(
+                musicaHitorica_desktop: musicaHitorica_desktop(),
+                musica_historica: musicaHitorica(),
+              )));
+          print(myControllerUser);
+        } else {
+          print("incorrecto");
+          print(myControllerUser);
+        }
+      });
+}
 
+musicaHitorica_desktop(){
+  return Center(
+    child: Text("DESKTOP"),
   );
 }
+
+
+class  resposiveDesign extends StatelessWidget {
+  const  resposiveDesign({
+    Key? key,
+    required  this.musica_historica,
+    required this.musicaHitorica_desktop,
+    }): super(key: key);
+
+    final Widget musica_historica;
+
+    final Widget musicaHitorica_desktop;
+
+  @override
+  Widget build(BuildContext context) {
+    return LayoutBuilder(
+      builder: (BuildContext context, BoxConstraints constraints) {
+        
+        print(constraints);
+        if(constraints.maxWidth > 768){
+          return musicaHitorica_desktop;
+        }
+        return musica_historica;
+      },
+    );
+  }
+}
+
+
+/**
+ * musicaHitorica()
+*/
