@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:musica_historica/pagesDesktop/pagesDesktopInfo/myBlogsDesktop.dart';
+import 'package:musica_historica/pagesDesktop/pagesDesktopInfo/noticesDesktop.dart';
+import 'package:musica_historica/pagesDesktop/pagesDesktopInfo/publicBlogsDesktop.dart';
 
 int index = 1;
 
@@ -31,7 +33,7 @@ drawerDesktop(context){
               title: Text("Noticias"),
               onTap: (){
                 
-                
+                Navigator.push(context, MaterialPageRoute(builder: (context) => noticesBlogsDesktop()));
               }
               ),
               SizedBox(
@@ -50,7 +52,9 @@ drawerDesktop(context){
           ListTile(
               leading:Icon(Icons.public_rounded) ,
               title: Text("Blogs publicos"),
-              onTap: (){},
+              onTap: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context) => publicBLogsDesktop()));
+              },
               ),
           ],
         ),
