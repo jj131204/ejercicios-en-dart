@@ -16,8 +16,74 @@ class myBLogs2 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: appBarDesktop(context, titulos, index),
-      body: Text("HOLA MUNDO"),
+      body: myBlogsDesktop(context),
       drawer: drawerDesktop(context),
     );
   }
+}
+
+myBlogsDesktop(context){
+
+  return Container(
+    child: Column(
+      
+      children: <Widget>[
+        SizedBox(
+          height: 15.0,
+        ),
+            // contenedor del texto inicial
+        Container(
+          margin: new EdgeInsets.symmetric(horizontal: 30.0),
+          child: Text(
+            "En esta sección podras encontras tus blogs privados, podras crear, editar o compartir tus blogs.",
+            style: TextStyle(fontSize: 12, color: Color(0xff333333)),
+          ),
+        ),
+
+        SizedBox(
+              height: 15.0,
+        ),
+
+        GridView.count(
+          scrollDirection: Axis.vertical,
+          shrinkWrap: true,
+          primary: false,
+          padding: const EdgeInsets.all(20),
+          crossAxisSpacing: 10,
+          mainAxisSpacing: 10,
+          crossAxisCount: 1,
+          children: [
+            Expanded(
+                child: functionsCards(context)
+            )
+
+          ],
+        ),
+
+        /** cards */
+      ],
+    ),
+  );
+}
+
+functionsCards(context){
+  /**int index = blogs.length;
+  List test = <Widget>[];
+  print(index);
+  
+  for (int number = 0; number < index; number++){
+    
+    print(number);
+
+    test.add(miCard(context, number));
+  } 
+
+  return test;*/
+
+  return ListView.builder(
+                    itemCount: blogs.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      /** Funcion que llama a las tarjetas */
+                      return miCard(context, index);
+  });
 }
